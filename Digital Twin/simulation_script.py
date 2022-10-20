@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# File   : granudrum.py
+# File   : simulation_script.py
 # License: GNU v3.0
 # Author : Andrei Leonard Nicusan <a.l.nicusan@bham.ac.uk>
 # Date   : 16.02.2022
+# Modified by: Ben Jenkins
+# Modify date: 07.10.2022
 
 
 import os
@@ -77,7 +79,7 @@ GranuDrum = namedtuple("GranuDrum", ["xlim", "ylim", "radius"])
 granudrum = GranuDrum([-0.042, 0.042], [-0.042, 0.042], 0.042)
 
 # Output image resolution
-resolution = (800, 800)
+resolution = (400, 400)
 
 print((
     "-----------------------------------------------------------------------\n"
@@ -296,10 +298,13 @@ sampling = 100
 frames = 5
 exposure_time = 0.002  # seconds
 
+if (1 / sampling) / 2 <= exposure_time:
+    raise Exception('Exposure time must be less than half the sampling rate')
+
 tstart = 5
 tend = 45
-checkpoints = np.arange(tstart, tend, 1 / sampling)
-exposure_frames = exposure_time/frames
+checkpoints = np.linspace(tstart, tend, int((sampling*(tend - tstart)) + 1))
+exposure_frames = exposure_time / frames
 
 # Save the complete data for the last 5 seconds of the simulation
 last = 5
@@ -308,10 +313,9 @@ radii_last = []
 positions_last = []
 velocities_last = []
 
-
 # Run simulation in batches of `frames` at a time
 i = 0
-while i < len(checkpoints):
+while i < (len(checkpoints) - 1):
     sample = i
 
     times = []
@@ -321,7 +325,7 @@ while i < len(checkpoints):
 
     # Collect frames for current sample
     for j in range(frames):
-        sim.step_to_time(checkpoints[i]+exposure_frames*(j+1))
+        sim.step_to_time(checkpoints[i] + exposure_frames * (j + 1))
 
         times.append(sim.time())
         radii.append(sim.radii())
@@ -337,8 +341,10 @@ while i < len(checkpoints):
     # Save images of the RTD and velocity probability (abs, x, y, z)
     save_images(sample, times, radii, positions, velocities)
 
+    i += 1
+
     # Finish simulation to time step i
-    sim.step_to_time((checkpoints[i]+checkpoints[1])-exposure_time)
+    sim.step_to_time(checkpoints[i])
 
     # If we're in the last 5s of simulation, also save complete data
     if checkpoints[i] > tend - last:
@@ -346,9 +352,6 @@ while i < len(checkpoints):
         radii_last.append(sim.radii())
         positions_last.append(sim.positions())
         velocities_last.append(sim.velocities())
-
-    i += 1
-
 
 # Save complete data from the last few seconds to disk
 times_last = np.array(times_last)
@@ -361,4 +364,4 @@ np.save(f"results/gd_radii.npy", radii_last)
 np.save(f"results/gd_positions.npy", positions_last)
 np.save(f"results/gd_velocities.npy", velocities_last)
 
-print("Finished! :D")
+print("Finished running simulation! :D")
