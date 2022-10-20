@@ -1,5 +1,7 @@
 # GranuDrum Digital Twin
 
+![GranuDrum-DigitalTwin-Render](images/GranuDrum.png)
+
 ## Description
 A discrete element method (DEM) Digital Twin of the Granutools' GranuDrum powder characterisation tool built using PICI-LIGGGHTS.
 This digital twin allows users to understand in more depth the behaviour of a powder in the GranuDrum. 
