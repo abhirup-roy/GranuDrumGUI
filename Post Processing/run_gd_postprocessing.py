@@ -5,8 +5,8 @@ import os
 import gd_postprocessing as pp
 
 # Paths
-root = ""  # Dir path to GranuDrum digital twin generated images
-df_savepath = ""  # Save path for the data
+root = "Example Data"  # Dir path to GranuDrum digital twin generated images
+df_savepath = "postprocessing_results"  # Save path for the data
 
 # User input
 number_of_images_to_use = 50  # Number of images to use for postprocessing
