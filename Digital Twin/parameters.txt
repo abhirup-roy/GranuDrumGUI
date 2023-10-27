@@ -1,9 +1,9 @@
 DEM Particle Parameters
 
-sliding_friction=0.2
-rolling_friction=0.1
-restitution=0.5
+sliding_friction=0.3197
+rolling_friction=0.00248
+restitution=0.3
 density=1000
-cohesive_energy_density=1000
+cohesive_energy_density=0
 rpm=30
-number_of_particles=142000
+number_of_particles=29954
