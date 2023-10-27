@@ -17,6 +17,11 @@ The parameters.txt file allows the sliding friction, rolling friction, restituti
 The particle size distribution also needs to be defined. This is currently done by going into the granudrum_liggghts.sim file and manually changing it.
 Previous knowledge of LIGGGHTS is required to do this currently but is planned to be improved in the future.
 
+## Post Processing the Data
+The digital twin outputs images in the same way as the real GranuDrum. This images can then be used with the post-processing script to calculate the dynamic angle of repose and cohesive index.
+To do this set the 'root' variable in the python file 'run_gd_postprocessing.py' to the folder containing the images and run the script.
+The Cohesive Index, Dynamical angle of repose and the 3rd order polynomial fit to the free surface will be saved as a Pandas dataframe in the folder designated in 'df_savepath' variable.
+
 ## Roadmap
 - [x] Add parameter text input file.
 - [ ] Develop way of automatically inputting particle size distribution.
