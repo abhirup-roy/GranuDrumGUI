@@ -6,9 +6,9 @@
 
 
 # Simulation constants
-variable timestep       equal 4e-6
-variable rotationPeriod equal 60/15         # s per revolution
-variable N              equal 142636        # Number of particles
+variable timestep       equal 1e-5
+variable rotationPeriod equal 60/30         # s per revolution
+variable N              equal 29954        # Number of particles
 variable NRate          equal ${N}/0.1      # Particle insertion rate
 
 
@@ -44,25 +44,28 @@ variable dens           equal 1000.0
 
 
 # Particle Size Distribution
-variable r0 equal 0.5e-3/2
-variable r1 equal 0.55e-3/2
-variable r2 equal 0.6e-3/2
-variable r3 equal 0.65e-3/2
-variable r4 equal 0.7e-3/2
-variable r5 equal 0.75e-3/2
-variable r6 equal 0.8e-3/2
-variable r7 equal 0.85e-3/2
-variable r8 equal 0.9e-3/2
+variable r0 equal 1050e-6/2
+variable r1 equal 1100e-6/2
+variable r2 equal 1150e-6/2
+variable r3 equal 1200e-6/2
+variable r4 equal 1250e-6/2
+variable r5 equal 1300e-6/2
+variable r6 equal 1350e-6/2
+variable r7 equal 1400e-6/2
+variable r8 equal 1450e-6/2
+variable r9 equal 1500e-6/2
 
-variable p0 equal 0.00098999
-variable p1 equal 0.01552829
-variable p2 equal 0.08670392
-variable p3 equal 0.21616048
-variable p4 equal 0.28446797
-variable p5 equal 0.22421823
-variable p6 equal 0.11663962
-variable p7 equal 0.04319794
-variable p8 equal 0.01209357
+
+variable p0 equal 0.0064659
+variable p1 equal 0.07387693
+variable p2 equal 0.26249571
+variable p3 equal 0.25249525
+variable p4 equal 0.17012964
+variable p5 equal 0.10530736
+variable p6 equal 0.06885834
+variable p7 equal 0.03662696
+variable p8 equal 0.01861549
+variable p9 equal 0.00512842
 
 
 # Set up rotating drum 
