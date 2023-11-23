@@ -7,6 +7,14 @@ A discrete element method (DEM) Digital Twin of the Granutools' GranuDrum powder
 This digital twin allows users to understand in more depth the behaviour of a powder in the GranuDrum. 
 Particle properties can be defined and the individual particle data or bulk powder behaviour extracted and analysed.
 
+## Example Usage
+
+The GranuDrum digital twin can be used to extract individual particle data for every particle in the system. This video shows an animation of the GranuDrum digital twin with each particle
+coloured by its absolute velocity. From this video, the free flowing active layer can be seen from the rest of the passive material that is following the rotation of the drum. This data 
+can then be used to get a velocity profile for the material in the drum.
+
+![GranuDrum Example Video](readme_files/gd_animation_45rpm.mp4)
+
 ## Getting Started
 To be able to use this digital twin an installation of PICI-LIGGGHTS is required. A step-by-step guide of how to install PICI-LIGGGHTS can be found [here](https://uob-positron-imaging-centre.github.io/InstallingPICI-LIGGGHTS/).
 
