@@ -16,14 +16,20 @@ import coexist
 import konigcell as kc
 import pandas as pd
 
-# Directory to save results to
-results_dir = "results"
+# Directory management
+running_simulation_dir = "granudrum_simulation"
+if not os.path.isdir(running_simulation_dir):
+    os.mkdir(running_simulation_dir)
+results_dir = f'{running_simulation_dir}/results'
 if not os.path.isdir(results_dir):
     os.mkdir(results_dir)
 
 # Relevant paths
 script_path = "granudrum_liggghts.sim"
 parameters_path = 'parameters.txt'
+
+# User variables
+use_small_drum = False
 
 # Extract parameters from parameters file and update liggghts script
 df = pd.read_csv(parameters_path, sep='=')
@@ -45,6 +51,11 @@ sim_script[1] = f"log {results_dir}/granudrum.log\n"
 sim_script[9] = f"variable rotationPeriod equal 60/{rpm}\n"
 sim_script[10] = f"variable N equal {nparticles}\n"
 
+# Set Drum Size
+if use_small_drum:
+    sim_script[43] = f'variable drum_stl       string mesh/rotating_drum_small_mm.stl\n'
+    sim_script[44] = f'variable inface_stl     string mesh/inface_small_mm.stl\n'
+    sim_script[45] = f'variable side_stl       string mesh/rotating_drum_side_small_mm.stl\n'
 
 # Parameter naming:
 #    PP  = Particle-Particle
@@ -69,7 +80,7 @@ sim_script[39] = f"variable cohPSW equal {cohesion}\n"
 sim_script[42] = f"variable dens equal {density}\n"
 
 # Save the simulation template with the modified parameters
-sim_path = f"{results_dir}/granudrum.sim"
+sim_path = f"{running_simulation_dir}/granudrum.sim"
 with open(sim_path, "w") as f:
     f.writelines(sim_script)
 
@@ -271,14 +282,13 @@ def save_images(sample, times, radii, positions, velocities):
 
     i_str = str(sample)  # Add zeros in front of sample number in file name.
     sample_zeros = i_str.zfill(4)
-
     Image.fromarray(pixels_rtd[1].pixels.T[::-1]).save(
-        f"results/gd_rtd_{sample_zeros}.png"
+        f"{results_dir}/gd_rtd_{sample_zeros}.png"
     )
 
     for i, v in enumerate(["abs", "x", "y", "z"]):
         Image.fromarray(pixels_vel[1 + 2 * i].pixels.T[::-1]).save(
-            f"results/gd_vel{v}_{sample_zeros}.png"
+            f"{results_dir}/gd_vel{v}_{sample_zeros}.png"
         )
 
 
@@ -359,9 +369,9 @@ radii_last = np.array(radii_last)
 positions_last = np.array(positions_last)
 velocities_last = np.array(velocities_last)
 
-np.save(f"results/gd_times.npy", times_last)
-np.save(f"results/gd_radii.npy", radii_last)
-np.save(f"results/gd_positions.npy", positions_last)
-np.save(f"results/gd_velocities.npy", velocities_last)
+np.save(f"{results_dir}/gd_times.npy", times_last)
+np.save(f"{results_dir}/gd_radii.npy", radii_last)
+np.save(f"{results_dir}/gd_positions.npy", positions_last)
+np.save(f"{results_dir}/gd_velocities.npy", velocities_last)
 
 print("Finished running simulation! :D")

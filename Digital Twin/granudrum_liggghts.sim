@@ -41,6 +41,9 @@ variable cohPSW         equal 20000             # Optimise
 variable coh            equal 0             # Dummy value, Wall-Sidewall
 
 variable dens           equal 1000.0
+variable drum_stl       string mesh/rotating_drum_mm.stl
+variable inface_stl     string mesh/inface_mm.stl
+variable side_stl       string mesh/rotating_drum_side_mm.stl
 
 
 # Particle Size Distribution
@@ -133,9 +136,9 @@ fix gravi all gravity 9.81 vector 0.0 0.0 -1.0
 
 
 # STL Geometries: drum / faces
-fix cad all mesh/surface/stress file    mesh/rotating_drum_mm.stl       type 2 scale 0.001 wear finnie
-fix side all mesh/surface/stress file   mesh/rotating_drum_side_mm.stl  type 3 scale 0.001
-fix inface all mesh/surface file        mesh/inface_mm.stl              type 3 scale 0.001
+fix cad all mesh/surface/stress file    ${drum_stl}                     type 2 scale 0.001 wear finnie
+fix side all mesh/surface/stress file   ${side_stl}                     type 3 scale 0.001
+fix inface all mesh/surface file        ${inface_stl}                   type 3 scale 0.001
 
 
 # Wall contact models
