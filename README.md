@@ -15,6 +15,15 @@ can then be used to get a velocity profile for the material in the drum.
 
 ![GranuDrum Example Video](readme_files/gd_animation_45rpm.mp4)
 
+### Results
+
+![Graph showing the change in cohesive index with different cohesive energy densities](readme_files/ci_vs_ced.png)
+
+The graph above shows an example of results that can be obtained from the GranuDrum digital twin. 
+Specifically in this case the change in cohesive index with increasing cohesive energy density at different sliding friction values.
+A clear trend showing can be seen showing that as the cohesive energy density increases the cohesive index increases. At the same time 
+sliding friction shows very little influence on the cohesive index except at  the highest cohesive energy density.
+
 ## Getting Started
 To be able to use this digital twin an installation of PICI-LIGGGHTS is required. A step-by-step guide of how to install PICI-LIGGGHTS can be found [here](https://uob-positron-imaging-centre.github.io/InstallingPICI-LIGGGHTS/).
 
