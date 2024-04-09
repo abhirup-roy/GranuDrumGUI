@@ -50,16 +50,9 @@ The Cohesive Index, Dynamical angle of repose and the 3rd order polynomial fit t
 If you run into any issues or bugs let us know by raising and issue on the GitLab! If you find a way to fix it raise a pull request!
 
 ## Authors and acknowledgment
-This digital twin wouldn't be possible without the help of all those below!
-- Ben Jenkins (Granutools, University of Birmingham)
-- Dominik Werner (University of Birmingham)
-- Andrei Leonard Nicusan (University of Birmingham)
-- Jack Sykes (University of Birmingham)
-- Dr. Kit Windows-Yule (University of Birmingham)
-- Prof. Jonathan Seville (University of Birmingham)
-- Aurelien Neveu (GranuTools)
-- Geoffroy Lumay (University of Liege, GranuTools)
-- Filip Francqui (GranuTools)
+The development of GranuTools digital-twins was made during the PhD thesis of Ben Jenkins in the framework 
+of a collaboration between GranuTools and University of Birmingham under the academic supervision of 
+Dr. Kit Windows-Yule and Prof. Jonathan Seville.
 
 ## Project status
 Actively being worked on!
